@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace MyJetWallet.Sdk.Common.Tests;
+namespace MarketingBox.Sdk.Common.Tests;
 
 public class ControllerExtensionsTests
 {

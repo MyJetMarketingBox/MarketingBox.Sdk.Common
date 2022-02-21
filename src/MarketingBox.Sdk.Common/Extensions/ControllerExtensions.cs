@@ -1,9 +1,9 @@
 using System;
+using MarketingBox.Sdk.Common.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MyJetWallet.Sdk.Common.Models;
 
-namespace MyJetWallet.Sdk.Common.Extensions;
+namespace MarketingBox.Sdk.Common.Extensions;
 
 public static class ControllerExtensions
 {

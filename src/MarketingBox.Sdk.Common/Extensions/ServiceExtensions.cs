@@ -1,9 +1,9 @@
 using System;
 using FluentValidation;
-using MyJetWallet.Sdk.Common.Exceptions;
-using MyJetWallet.Sdk.Common.Models;
+using MarketingBox.Sdk.Common.Exceptions;
+using MarketingBox.Sdk.Common.Models;
 
-namespace MyJetWallet.Sdk.Common.Extensions;
+namespace MarketingBox.Sdk.Common.Extensions;
 
 public static class ServiceExtensions
 {

@@ -1,6 +1,6 @@
 using System;
 
-namespace MyJetWallet.Sdk.Common.Exceptions;
+namespace MarketingBox.Sdk.Common.Exceptions;
 
 public class AlreadyExistsException : Exception
 {

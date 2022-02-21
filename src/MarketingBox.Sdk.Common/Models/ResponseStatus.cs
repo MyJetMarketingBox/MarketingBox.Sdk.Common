@@ -1,4 +1,4 @@
-namespace MyJetWallet.Sdk.Common.Models;
+namespace MarketingBox.Sdk.Common.Models;
 
 public enum ResponseStatus
 {

@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace MyJetWallet.Sdk.Common.Models
+namespace MarketingBox.Sdk.Common.Models
 {
     [DataContract]
     public class Response<TData>
