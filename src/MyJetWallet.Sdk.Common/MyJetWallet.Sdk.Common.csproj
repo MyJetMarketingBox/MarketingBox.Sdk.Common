@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RepositoryUrl>https://github.com/MyJetWallet/MyJetWallet.Sdk.Common</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MyJetWallet.Sdk.Service" Version="2.1.7" />
+  </ItemGroup>
+
+</Project>
