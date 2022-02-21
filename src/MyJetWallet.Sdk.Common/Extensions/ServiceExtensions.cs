@@ -24,6 +24,9 @@ public static class ServiceExtensions
             case AlreadyExistsException:
                 status = ResponseStatus.BadRequest;
                 break;
+            case ForbiddenException:
+                status = ResponseStatus.Forbidden;
+                break;
             case UnauthorizedException:
                 status = ResponseStatus.Unauthorized;
                 break;
