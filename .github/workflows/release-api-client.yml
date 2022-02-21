@@ -37,5 +37,4 @@ jobs:
         nupkg-path:  './src/MarketingBox.Sdk.Common/bin/Release/*.nupkg'
         repo-owner:  'myjetmarketingbox'
         gh-user:  ${{ github.actor }}
-        token:  ${{ secrets.GITHUB_TOKEN }}  
-
+        token:  ${{ secrets.GITHUB_TOKEN }}
