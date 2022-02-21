@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 namespace MyJetWallet.Sdk.Common.Models
 {
     [DataContract]
-    public abstract class Response<TData>
+    public class Response<TData>
     {
         [DataMember(Order = 1)]
         public ResponseStatus Status { get; set; }
