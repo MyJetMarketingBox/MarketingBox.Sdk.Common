@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RepositoryUrl>https://github.com/MyJetWallet/MyJetWallet.Sdk.Common</RepositoryUrl>
+    <RepositoryUrl>https://github.com/MyJetMarketingBox/MarketingBox.Sdk.Common</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
