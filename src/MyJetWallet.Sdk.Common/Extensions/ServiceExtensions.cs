@@ -20,6 +20,7 @@ public static class ServiceExtensions
                 message = string.Join(",\n", exception.Errors);
                 status = ResponseStatus.BadRequest;
                 break;
+            case BadRequestException:
             case AlreadyExistsException:
                 status = ResponseStatus.BadRequest;
                 break;
