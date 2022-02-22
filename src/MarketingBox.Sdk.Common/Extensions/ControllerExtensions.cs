@@ -29,4 +29,25 @@ public static class ControllerExtensions
                 throw new ApiException(result.Error, StatusCodes.Status500InternalServerError);
         }
     }
+    public static IActionResult ProcessResult<TIn>(
+        this ControllerBase controllerBase,
+        Response<TIn> result)
+    {
+        switch (result.Status)
+        {
+            case ResponseStatus.Ok:
+                return controllerBase.Ok();
+            case ResponseStatus.NotFound:
+                throw new ApiException(result.Error,StatusCodes.Status404NotFound);
+            case ResponseStatus.BadRequest:
+                throw new ApiException(result.Error);
+            case ResponseStatus.Unauthorized:
+                throw new ApiException(result.Error,StatusCodes.Status401Unauthorized);
+            case ResponseStatus.Forbidden:
+                throw new ApiException(result.Error,StatusCodes.Status403Forbidden);
+            case ResponseStatus.InternalError:
+            default:
+                throw new ApiException(result.Error, StatusCodes.Status500InternalServerError);
+        }
+    }
 }
