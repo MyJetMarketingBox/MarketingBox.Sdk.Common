@@ -1,5 +1,5 @@
-using System;
-using MarketingBox.Sdk.Common.Models;
+using AutoWrapper.Wrappers;
+using MarketingBox.Sdk.Common.Models.Grpc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,23 +12,21 @@ public static class ControllerExtensions
         Response<TIn> result,
         TOut body)
     {
-        
         switch (result.Status)
         {
             case ResponseStatus.Ok:
                 return controllerBase.Ok(body);
             case ResponseStatus.NotFound:
-                controllerBase.ModelState.AddModelError("Error", result.ErrorMessage);
-                return controllerBase.NotFound(controllerBase.ModelState);
+                throw new ApiException(result.Error,StatusCodes.Status404NotFound);
             case ResponseStatus.BadRequest:
-                controllerBase.ModelState.AddModelError("Error", result.ErrorMessage);
-                return controllerBase.BadRequest(controllerBase.ModelState);
-            case ResponseStatus.InternalError:
-                return controllerBase.StatusCode(StatusCodes.Status500InternalServerError);
+                throw new ApiException(result.Error);
             case ResponseStatus.Unauthorized:
-                return controllerBase.StatusCode(StatusCodes.Status401Unauthorized);
+                throw new ApiException(result.Error,StatusCodes.Status401Unauthorized);
+            case ResponseStatus.Forbidden:
+                throw new ApiException(result.Error,StatusCodes.Status403Forbidden);
+            case ResponseStatus.InternalError:
             default:
-                throw new ArgumentOutOfRangeException();
+                throw new ApiException(result.Error, StatusCodes.Status500InternalServerError);
         }
     }
 }

@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace MarketingBox.Sdk.Common.Models
+namespace MarketingBox.Sdk.Common.Models.Grpc
 {
     [DataContract]
     public class Response<TData>
@@ -9,7 +9,7 @@ namespace MarketingBox.Sdk.Common.Models
         public ResponseStatus Status { get; set; }
         
         [DataMember(Order = 2)]
-        public string ErrorMessage { get; set; }
+        public Error Error { get; set; }
 
         [DataMember(Order = 3)]
         public TData Data { get; set; }

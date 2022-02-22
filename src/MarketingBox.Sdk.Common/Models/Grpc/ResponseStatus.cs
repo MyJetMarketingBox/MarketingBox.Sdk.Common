@@ -1,4 +1,4 @@
-namespace MarketingBox.Sdk.Common.Models;
+namespace MarketingBox.Sdk.Common.Models.Grpc;
 
 public enum ResponseStatus
 {

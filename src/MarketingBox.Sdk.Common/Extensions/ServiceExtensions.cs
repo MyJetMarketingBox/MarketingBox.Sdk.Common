@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using FluentValidation;
 using MarketingBox.Sdk.Common.Exceptions;
 using MarketingBox.Sdk.Common.Models;
+using MarketingBox.Sdk.Common.Models.Grpc;
 
 namespace MarketingBox.Sdk.Common.Extensions;
 
@@ -9,7 +11,10 @@ public static class ServiceExtensions
 {
     public static Response<T> FailedResponse<T>(this Exception ex)
     {
-        var message = ex.Message;
+        var error = new Error
+        {
+            ErrorMessage = ex.Message
+        };
         ResponseStatus status;
         switch (ex)
         {
@@ -17,10 +22,17 @@ public static class ServiceExtensions
                 status = ResponseStatus.NotFound;
                 break;
             case ValidationException exception:
-                message = string.Join(",\n", exception.Errors);
+                error.ValidationErrors = exception.Errors.Select(x => new ValidationError
+                {
+                    ErrorMessage = x.ErrorMessage,
+                    ParameterName = x.PropertyName
+                }).ToList();
                 status = ResponseStatus.BadRequest;
                 break;
-            case BadRequestException:
+            case BadRequestException exception:
+                error = exception.Error;
+                status = ResponseStatus.BadRequest;
+                break;
             case AlreadyExistsException:
                 status = ResponseStatus.BadRequest;
                 break;
@@ -38,7 +50,7 @@ public static class ServiceExtensions
         return new Response<T>
         {
             Status = status,
-            ErrorMessage = message
+            Error =  error
         };
     }
 }
