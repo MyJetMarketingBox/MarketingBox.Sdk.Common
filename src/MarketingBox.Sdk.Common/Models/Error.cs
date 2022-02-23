@@ -11,10 +11,10 @@ public class Error
     [DataMember(Order = 1)]
     [AutoWrapperPropertyMap(Prop.ResponseException_ExceptionMessage)]
     public string ErrorMessage { get; set; }
-    
+
     [DataMember(Order = 2)]
     [AutoWrapperPropertyMap(Prop.ResponseException_ValidationErrors)]
-    public List<ValidationError> ValidationErrors { get; set; }
+    public List<ValidationError> ValidationErrors { get; set; } = new();
 }
 
 [DataContract]
