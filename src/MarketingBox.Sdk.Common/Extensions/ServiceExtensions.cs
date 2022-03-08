@@ -22,6 +22,7 @@ public static class ServiceExtensions
                 status = ResponseStatus.NotFound;
                 break;
             case ValidationException exception:
+                error.ErrorMessage = BadRequestException.DefaultErrorMessage;
                 error.ValidationErrors = exception.Errors.Select(x => new ValidationError
                 {
                     ErrorMessage = x.ErrorMessage,
