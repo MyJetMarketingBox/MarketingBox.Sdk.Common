@@ -54,4 +54,17 @@ public static class ServiceExtensions
             Error =  error
         };
     }
+    
+    public static T Process<T>(this Response<T> response)
+    {
+        return response.Status switch
+        {
+            ResponseStatus.Ok => response.Data,
+            ResponseStatus.NotFound => throw new NotFoundException(response.Error.ErrorMessage),
+            ResponseStatus.BadRequest => throw new BadRequestException(response.Error),
+            ResponseStatus.Forbidden => throw new ForbiddenException(response.Error.ErrorMessage),
+            ResponseStatus.Unauthorized => throw new UnauthorizedException(response.Error.ErrorMessage),
+            ResponseStatus.InternalError => throw new Exception(response.Error.ErrorMessage)
+        };
+    }
 }
