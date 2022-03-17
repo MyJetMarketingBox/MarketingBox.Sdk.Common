@@ -57,7 +57,7 @@ public static class ControllerExtensions
         }
     }
 
-    public static ActionResult<TOut> FailedResponse<TOut>(
+    public static ActionResult<TOut> Failed<TOut>(
         this Exception exception)
     {
         var error = new Error
@@ -89,7 +89,7 @@ public static class ControllerExtensions
         }
     }
 
-    public static IActionResult FailedResponse(
+    public static IActionResult Failed(
         this Exception exception)
     {
         var error = new Error
