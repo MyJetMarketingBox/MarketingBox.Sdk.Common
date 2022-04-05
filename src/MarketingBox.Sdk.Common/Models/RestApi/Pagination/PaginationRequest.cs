@@ -11,6 +11,6 @@ namespace MarketingBox.Sdk.Common.Models.RestApi.Pagination
         public T Cursor { get; set; }
 
         [FromQuery(Name = "limit")]
-        public int Limit { get; set; } = 50;
+        public int? Limit { get; set; }
     }
 }

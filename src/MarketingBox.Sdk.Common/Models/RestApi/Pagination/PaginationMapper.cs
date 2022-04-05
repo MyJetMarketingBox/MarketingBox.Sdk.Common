@@ -7,29 +7,35 @@ namespace MarketingBox.Sdk.Common.Models.RestApi.Pagination
 {
     public static class PaginationMapper
     {
-        public static Paginated<TItem, TId> Paginate<TItem, TId>(this IReadOnlyCollection<TItem> source,
+        public static Paginated<TItem, TId> Paginate<TItem, TId>(
+            this IReadOnlyCollection<TItem> source,
             PaginationRequest<TId> request,
             IUrlHelper url,
+            int total,
             Func<TItem, TId> idProjection)
         {
 
             return new Paginated<TItem, TId>
             {
                 Items = source,
+                
                 Pagination = MapPaginationModel(request,
                     url,
                     source,
-                    idProjection)
+                    idProjection,
+                    total)
             };
         }
 
         private static Pagination<TId> MapPaginationModel<TId, TItem>(PaginationRequest<TId> request,
             IUrlHelper url,
             IReadOnlyCollection<TItem> items,
-            Func<TItem, TId> idProjection)
+            Func<TItem, TId> idProjection,
+            int total)
         {
             var result = new Pagination<TId>
             {
+                Total = total,
                 Count = items.Count,
                 Order = request.Order,
                 Cursor = request.Cursor,

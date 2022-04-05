@@ -4,6 +4,8 @@
     {
         public T Cursor { get; set; }
         public int Count { get; set; }
+        
+        public int Total { get; set; }
         public PaginationOrder Order { get; set; }
         public string NextUrl { get; set; }
     }
