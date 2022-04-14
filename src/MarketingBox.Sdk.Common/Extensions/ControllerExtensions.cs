@@ -84,6 +84,7 @@ public static class ControllerExtensions
                 throw new ApiException(error, StatusCodes.Status403Forbidden);
             case UnauthorizedException:
                 throw new ApiException(error, StatusCodes.Status401Unauthorized);
+            case ApiException: throw exception;
             default:
                 throw new ApiException(error, StatusCodes.Status500InternalServerError);
         }
@@ -116,6 +117,7 @@ public static class ControllerExtensions
                 throw new ApiException(error, StatusCodes.Status403Forbidden);
             case UnauthorizedException:
                 throw new ApiException(error, StatusCodes.Status401Unauthorized);
+            case ApiException: throw exception;
             default:
                 throw new ApiException(error, StatusCodes.Status500InternalServerError);
         }
