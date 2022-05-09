@@ -2,7 +2,7 @@
 {
     public enum RegistrationStatus
     {
-        Created = 0,
+        Failed = 0,
         Registered = 1, // == Declined
         Deposited = 2,
         Approved = 3,
