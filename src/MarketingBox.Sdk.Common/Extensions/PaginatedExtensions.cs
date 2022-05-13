@@ -12,7 +12,7 @@ namespace MarketingBox.Sdk.Common.Extensions
             {
                 Pagination = new Pagination<TId>
                 {
-                    Order = request.Order,
+                    Order = request.Order.Value,
                     Cursor = request.Cursor
                 },
                 Items = ArraySegment<TItem>.Empty

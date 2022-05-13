@@ -37,7 +37,7 @@ namespace MarketingBox.Sdk.Common.Models.RestApi.Pagination
             {
                 Total = total,
                 Count = items.Count,
-                Order = request.Order,
+                Order = request.Order.Value,
                 Cursor = request.Cursor,
             };
 
