@@ -3,7 +3,7 @@ using MarketingBox.Sdk.Common.Attributes;
 
 namespace MarketingBox.Sdk.Common.Models.RestApi.Pagination
 {
-    public class PaginationRequest<T>
+    public class PaginationRequest<T> : ValidatableEntity
     {
         [DefaultValue(PaginationOrder.Desc)]
         [IsEnum]
