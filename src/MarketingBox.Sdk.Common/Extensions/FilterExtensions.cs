@@ -24,15 +24,31 @@ namespace MarketingBox.Sdk.Common.Extensions
                     return res;
                 }
 
-                var ids = stringIds.Split(',').Distinct().ToList();
+                var ids = stringIds
+                    .Split(',')
+                    .Select(x => x.ToLowerInvariant())
+                    .Distinct()
+                    .ToList();
 
                 if (t.IsEnum)
                 {
                     var names = Enum.GetNames(t);
-                    var commonNames = ids.Intersect(names).ToList();
+                    var commonNames = new Dictionary<string, string>();
+                    foreach (var id in ids)
+                    {
+                        foreach (var name in names)
+                        {
+                            if (!string.Equals(name, id, StringComparison.InvariantCultureIgnoreCase))
+                                continue;
+
+                            commonNames.TryAdd(name, id);
+                            break;
+                        }
+                    }
+
                     if (commonNames.Any())
                     {
-                        res.AddRange(commonNames.Select(commonName => (T) Enum.Parse(t, commonName)));
+                        res.AddRange(commonNames.Select(commonName => (T) Enum.Parse(t, commonName.Key)));
                     }
                     else
                     {

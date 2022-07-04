@@ -17,13 +17,13 @@ public class FilterExtensionsTests
     private static object[] _validEnumData =
     {
         new object[] {"Test1,Test2,Test2,Test1"},
+        new object[] {"test1,test2,TEST1,TEST2"},
         new object[] {"1,2,1,2"},
     };
 
     private static object[] _wrongEnumData =
     {
         new object[] {"Test1,Test2,Test3"},
-        new object[] {"Test1,,Test2"},
         new object[] {"1,2,a"},
         new object[] {"1,2,3"},
         new object[] {"1,,2"}
